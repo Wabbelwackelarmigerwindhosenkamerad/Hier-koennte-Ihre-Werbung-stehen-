@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=main
+comment1.params=
+comment1.target=void\ main()
+comment2.params=pUeberschrift\ pText
+comment2.target=void\ printInfo(java.lang.String,\ java.lang.String)
+comment3.params=
+comment3.target=void\ initKarten()
+numComments=4

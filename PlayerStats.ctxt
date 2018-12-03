@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=PlayerStats
+comment1.params=pName\ pWins\ pLose
+comment1.target=PlayerStats(java.lang.String,\ int,\ int)
+comment2.params=
+comment2.target=java.lang.String\ GibName()
+comment3.params=
+comment3.target=int\ GibWins()
+comment4.params=
+comment4.target=int\ GibLose()
+numComments=5
