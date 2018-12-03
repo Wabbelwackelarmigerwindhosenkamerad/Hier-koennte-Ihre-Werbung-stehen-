@@ -1,25 +1,26 @@
+
 import java.util.Scanner;
 
 public class main
 {
     static Scanner key = new Scanner(System.in);
-    
+
     Karten[] spielkarten = new Karten[52];
     Karten[] spieler1 = new Karten[3];
     Karten[] spieler2 = new Karten[3];
     Karten[] spieler3 = new Karten[3];
-    
+
     Karten[] mitte = new Karten[3];
-    
+
     int textEingabe = 0;
 
     public void main()
     {
         System.out.println((char)12);
-        
+
         //Siehe unten
         initKarten();
-        
+
         /* Die Spieler-Karten und Mitte-Karten müssen nicht initialisiert werden.
          * Die entsprechenden Arrays können Objekte vom Typ Karten aufnehmen. Es
          * müssen jedoch keine Dummy-Karten erstellt werden.
@@ -39,7 +40,7 @@ public class main
         //Willkommens Ansprache
         System.out.println("                 Willkommen                ");
         System.out.println("Spiel Starten[1] -  oder - Spiel Beenden[2]");
-        
+
         while(textEingabe == 0 )  
         {
             textEingabe = key.nextInt();
@@ -65,9 +66,9 @@ public class main
         //Mischen + austeilen
         textEingabe = 0;
         Karten tempKarte;
-        
+
         int zufall;
-        
+
         while(textEingabe != 1 || textEingabe != 2) 
         {
             System.out.println("mischen[1] - oder - austeilen[2]");
@@ -97,28 +98,28 @@ public class main
                 spielkarten[1] = null;
                 spieler1[2] = spielkarten[2];
                 spielkarten[2] = null;
-                
+
                 spieler2[0] = spielkarten[3]; 
                 spielkarten[3] = null;
                 spieler2[1] = spielkarten[4];
                 spielkarten[4] = null;
                 spieler2[2] = spielkarten[5];
                 spielkarten[5] = null;
-                
+
                 spieler3[0] = spielkarten[6]; 
                 spielkarten[6] = null;
                 spieler3[1] = spielkarten[7];
                 spielkarten[7] = null;
                 spieler3[2] = spielkarten[8];
                 spielkarten[8] = null;
-                
+
                 mitte[0] = spielkarten[9]; 
                 spielkarten[9] = null;
                 mitte[1] = spielkarten[10];
                 spielkarten[10] = null;
                 mitte[2] = spielkarten[11];
                 spielkarten[11] = null;
-                
+
                 break;
             }
             //Falsche eingabe
@@ -127,35 +128,68 @@ public class main
                 System.out.println("Diese Auswahl gibt es nicht!");
             }
         }
-        
+
         //------------------------------------------------------------------------
         //Stapelauswahl
         zufall = (int)(Math.random() * PlayerStats.length);
         textEingabe = 0;
-        
+
         System.out.println("Der" + PlayerStats[zufall].GibName() + " darf zwischen zwei verschiedenen Stapeln auswählen");
         System.out.println("Linker Stapel[1] - oder - Rechter Stapel[2]");
-        
+        textEingabe = key.nextInt();
         while(textEingabe != 1 || textEingabe != 2)
         {
             //Linker Stapel
             if(textEingabe == 1)
             {
-                System.out.println("Deine Karten sind : ");
+                System.out.println("Die Karten des Linkem stapels sind ");
                 System.out.println("Sicher[1] - oder - Risiko[2]");
-                if(textEingabe == 1)
+                textEingabe = 0;
+                textEingabe = key.nextInt();
+                while(textEingabe != 1 || textEingabe != 2)
                 {
-                    System.out.println("Auf gehts !");
-                }
-                else if(textEingabe == 2)
-                {
-
+                    if(textEingabe == 1)
+                    {
+                        System.out.println("Auf gehts, es sind deine Karten !"); break;
+                    }
+                    else if(textEingabe == 2)
+                    {
+                        System.out.println("Deine Karten sind nun : "); break;
+                    }
+                    else
+                    {
+                        System.out.println("Diese auswahl gab es nicht !");
+                        textEingabe = 0;
+                        textEingabe = key.nextInt();
+                        break;
+                    }
                 }
             }
             //Rechter Stapel
             else if(textEingabe == 2)
             {
-
+                System.out.println("Die Karten des Rechtem stapels sind : ");
+                System.out.println("Sicher[1] - oder - Risiko[2]");
+                textEingabe = 0;
+                textEingabe = key.nextInt();
+                while(textEingabe != 1 || textEingabe != 2)
+                {
+                    if(textEingabe == 1)
+                    {
+                        System.out.println("Auf gehts, es sind deine Karten !"); break;
+                    }
+                    else if(textEingabe == 2)
+                    {
+                        System.out.println("Deine Karten sind nun : "); break;
+                    }
+                    else
+                    {
+                        System.out.println("Diese auswahl gab es nicht !");
+                        textEingabe = 0;
+                        textEingabe = key.nextInt();
+                        break;
+                    }
+                }
             }
             //Falsche eingabe
             else
@@ -164,7 +198,7 @@ public class main
             }
         }
     }
-    
+
     private void printInfo(String pUeberschrift, String pText)
     {
         /* Ihr könntet Euch hier eine Methode erstellen, die Euer Menü
@@ -174,6 +208,7 @@ public class main
          * Außerdem kann diese Methode dann immer die Ausgabe löschen,
          * bevor etwas neues ausgegeben wird.
          */
+        
     }
 
     private void initKarten()

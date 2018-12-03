@@ -1,17 +1,11 @@
 
-/**
- * Beschreiben Sie hier die Klasse Test.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
- */
 public class Test
 {
     Karten[] spielkarten = new Karten[52];
     public void initKarten()
     {
         String[] farben = {"Herz", "Karo", "Pik", "Kreuz"};
-
+        
         for(int j = 0; j < 4; j++)
         {
             for(int i = 0; i < 13; i++)
