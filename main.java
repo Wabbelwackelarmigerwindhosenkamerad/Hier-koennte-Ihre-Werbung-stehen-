@@ -133,16 +133,19 @@ public class main
         //Stapelauswahl
         zufall = (int)(Math.random() * PlayerStats.length);
         textEingabe = 0;
-
-        System.out.println("Der" + PlayerStats[zufall].GibName() + " darf zwischen zwei verschiedenen Stapeln auswählen");
+        int textEingabe2;
+        Karten kartenSpeicher1;
+        Karten kartenSpeicher2;
+        Karten kartenSpeicher3;
+        System.out.println("Der " + PlayerStats[0].GibName() + " darf zwischen zwei verschiedenen Stapeln auswählen");
         System.out.println("Linker Stapel[1] - oder - Rechter Stapel[2]");
-        textEingabe = key.nextInt();
-        while(textEingabe != 1 || textEingabe != 2)
+        textEingabe2 = key.nextInt();
+        while(textEingabe2 != 1 || textEingabe != 2)
         {
             //Linker Stapel
-            if(textEingabe == 1)
+            if(textEingabe2 == 1)
             {
-                System.out.println("Die Karten des Linkem stapels sind ");
+                System.out.println("Die Karten des Linkem stapels sind [" + spieler1[0] + "][" + spieler1[1] + "][" + spieler1[2] + "]");
                 System.out.println("Sicher[1] - oder - Risiko[2]");
                 textEingabe = 0;
                 textEingabe = key.nextInt();
@@ -154,7 +157,16 @@ public class main
                     }
                     else if(textEingabe == 2)
                     {
-                        System.out.println("Deine Karten sind nun : "); break;
+                        kartenSpeicher1 = spieler1[0];
+                        kartenSpeicher2 = spieler1[1];
+                        kartenSpeicher3 = spieler1[2];
+                        spieler1[0] = mitte[0];
+                        spieler1[1] = mitte[1];
+                        spieler1[2] = mitte[2];
+                        mitte[0] = kartenSpeicher1;
+                        mitte[1] = kartenSpeicher2;
+                        mitte[2] = kartenSpeicher3;
+                        System.out.println("Deine Karten sind nun [" + spieler1[0] + "][" + spieler1[1] + "][" + spieler1[2] + "]"); break;
                     }
                     else
                     {
@@ -166,21 +178,30 @@ public class main
                 }
             }
             //Rechter Stapel
-            else if(textEingabe == 2)
+            else if(textEingabe2 == 2)
             {
-                System.out.println("Die Karten des Rechtem stapels sind : ");
-                System.out.println("Sicher[1] - oder - Risiko[2]");
+                System.out.println("Die Karten des Rechtem stapels sind [" + mitte[0] + "][" + mitte[1] + "][" + mitte[2] + "]");
+                System.out.println("Sicher[1] - oder - Risiko[2]"); 
                 textEingabe = 0;
                 textEingabe = key.nextInt();
                 while(textEingabe != 1 || textEingabe != 2)
                 {
                     if(textEingabe == 1)
                     {
+                        kartenSpeicher1 = spieler1[0];
+                        kartenSpeicher2 = spieler1[1];
+                        kartenSpeicher3 = spieler1[2];
+                        spieler1[0] = mitte[0];
+                        spieler1[1] = mitte[1];
+                        spieler1[2] = mitte[2];
+                        mitte[0] = kartenSpeicher1;
+                        mitte[1] = kartenSpeicher2;
+                        mitte[2] = kartenSpeicher3;
                         System.out.println("Auf gehts, es sind deine Karten !"); break;
                     }
                     else if(textEingabe == 2)
                     {
-                        System.out.println("Deine Karten sind nun : "); break;
+                        System.out.println("Deine Karten sind nun [" + spieler1[0] + "][" + spieler1[1] + "][" + spieler1[2] + "] "); break;
                     }
                     else
                     {
@@ -197,6 +218,8 @@ public class main
                 System.out.println("Diese auswahl gab es nicht !"); 
             }
         }
+        
+        System.out.println("als nächstes dürfen sich " + PlayerStats[1].GibName() + "und" + PlayerStats[0].GibName() + " ihre Karten anschauen");
     }
 
     private void printInfo(String pUeberschrift, String pText)
