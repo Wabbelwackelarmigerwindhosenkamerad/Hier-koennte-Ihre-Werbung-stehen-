@@ -38,11 +38,10 @@ public class main
 
         //------------------------------------------------------------------------
         //Willkommens Ansprache
-        System.out.println("                 Willkommen                ");
-        System.out.println("Spiel Starten[1] -  oder - Spiel Beenden[2]");
-
         while(textEingabe == 0 )  
         {
+            System.out.println("                 Willkommen                ");
+            System.out.println("Spiel Starten[1] -  oder - Spiel Beenden[2]");
             textEingabe = key.nextInt();
             //Start
             if(textEingabe == 1)
@@ -58,19 +57,19 @@ public class main
             //Falsche eingabe
             else
             {
-                System.out.println("Diese auswahl gab es nicht !"); 
-                break;
+                System.out.println((char)12);
+                printFalsch();
             }
         }
         //------------------------------------------------------------------------
         //Mischen + austeilen
         textEingabe = 0;
         Karten tempKarte;
-
         int zufall;
 
         while(textEingabe != 1 || textEingabe != 2) 
         {
+            System.out.println((char)12);
             System.out.println("mischen[1] - oder - austeilen[2]");
             textEingabe = key.nextInt();
             //Mischen
@@ -125,12 +124,14 @@ public class main
             //Falsche eingabe
             else
             {
-                System.out.println("Diese Auswahl gibt es nicht!");
+                System.out.println((char)12);
+                printFalsch();
             }
         }
 
         //------------------------------------------------------------------------
         //Stapelauswahl
+        System.out.println((char)12);
         zufall = (int)(Math.random() * PlayerStats.length);
         textEingabe = 0;
         int textEingabe2;
@@ -145,7 +146,8 @@ public class main
             //Linker Stapel
             if(textEingabe2 == 1)
             {
-                System.out.println("Die Karten des Linkem stapels sind [" + spieler1[0] + "][" + spieler1[1] + "][" + spieler1[2] + "]");
+                System.out.println((char)12);
+                System.out.println("Die Karten des Linkem stapels sind [" + spieler1[0].gibKarte() + "][" + spieler1[1].gibKarte() + "][" + spieler1[2].gibKarte() + "]");
                 System.out.println("Sicher[1] - oder - Risiko[2]");
                 textEingabe = 0;
                 textEingabe = key.nextInt();
@@ -157,6 +159,7 @@ public class main
                     }
                     else if(textEingabe == 2)
                     {
+                        System.out.println((char)12);
                         kartenSpeicher1 = spieler1[0];
                         kartenSpeicher2 = spieler1[1];
                         kartenSpeicher3 = spieler1[2];
@@ -166,21 +169,23 @@ public class main
                         mitte[0] = kartenSpeicher1;
                         mitte[1] = kartenSpeicher2;
                         mitte[2] = kartenSpeicher3;
-                        System.out.println("Deine Karten sind nun [" + spieler1[0] + "][" + spieler1[1] + "][" + spieler1[2] + "]"); break;
+                        System.out.println("Deine Karten sind nun [" + spieler1[0].gibKarte() + "][" + spieler1[1].gibKarte() + "][" + spieler1[2].gibKarte() + "]"); break;
                     }
                     else
                     {
-                        System.out.println("Diese auswahl gab es nicht !");
+                        System.out.println((char)12);
+                        printFalsch();
                         textEingabe = 0;
                         textEingabe = key.nextInt();
-                        break;
                     }
                 }
+                break;
             }
             //Rechter Stapel
             else if(textEingabe2 == 2)
             {
-                System.out.println("Die Karten des Rechtem stapels sind [" + mitte[0] + "][" + mitte[1] + "][" + mitte[2] + "]");
+                System.out.println((char)12);
+                System.out.println("Die Karten des Rechtem stapels sind [" + mitte[0].gibKarte() + "][" + mitte[1].gibKarte() + "][" + mitte[2].gibKarte() + "]");
                 System.out.println("Sicher[1] - oder - Risiko[2]"); 
                 textEingabe = 0;
                 textEingabe = key.nextInt();
@@ -201,27 +206,111 @@ public class main
                     }
                     else if(textEingabe == 2)
                     {
-                        System.out.println("Deine Karten sind nun [" + spieler1[0] + "][" + spieler1[1] + "][" + spieler1[2] + "] "); break;
+                        System.out.println((char)12);
+                        System.out.println("Deine Karten sind nun [" + spieler1[0].gibKarte() + "][" + spieler1[1].gibKarte() + "][" + spieler1[2].gibKarte() + "] "); break;
                     }
                     else
                     {
-                        System.out.println("Diese auswahl gab es nicht !");
+                        System.out.println((char)12);
+                        printFalsch();
                         textEingabe = 0;
                         textEingabe = key.nextInt();
-                        break;
                     }
                 }
+                break;
             }
             //Falsche eingabe
             else
             {
-                System.out.println("Diese auswahl gab es nicht !"); 
+                System.out.println((char)12);
+                printFalsch();
             }
         }
-        
-        System.out.println("als nächstes dürfen sich " + PlayerStats[1].GibName() + "und" + PlayerStats[0].GibName() + " ihre Karten anschauen");
+        //Andere spieler karten
+        System.out.println((char)12);
+        System.out.println("als nächstes dürfen sich " + PlayerStats[1].GibName() + " und " + PlayerStats[0].GibName() + " ihre Karten anschauen");
+        System.out.println();
+        System.out.println((char)12);
+        textEingabe = 0;
+        while(textEingabe != 2)
+        {
+            System.out.println("Spieler 2");
+            printKartenSpieler2();
+            System.out.println();
+            System.out.println("Weiter zu Spieler 3[1]");
+            textEingabe = 0;
+            textEingabe = key.nextInt();
+            if(textEingabe == 1)
+            {
+                System.out.println((char)12);
+                System.out.println("Spieler 3");
+                System.out.println(PlayerStats[2].GibName());
+                printKartenSpieler3();
+                System.out.println();
+                System.out.println("Spiel Beginn[2]");
+                textEingabe = 0;
+                textEingabe = key.nextInt();
+            }
+            else
+            { 
+                System.out.println((char)12);
+                printFalsch();
+            }
+        }
+        System.out.println((char)12);
+        System.out.println("...");
     }
-
+    
+    private void printFalsch()
+    {
+        System.out.println();
+        System.out.println("Diese auswahl gab es nicht !");
+    }
+    
+    private void printKartenSpieler1()
+    {
+        System.out.println("Deine Karten :");
+        System.out.println();
+        for(int i = 0; i < spieler1.length; i++)
+        {
+            System.out.print("[" + spieler1[i].gibKarte() + "]");
+            System.out.println();
+        }
+    }
+    
+    private void printKartenSpieler2()
+    {
+        System.out.println("Deine Karten :");
+        System.out.println();
+        for(int i = 0; i < spieler2.length; i++)
+        {
+            System.out.print("[" + spieler2[i].gibKarte() + "]");
+            System.out.println();
+        }
+    }
+    
+    private void printKartenSpieler3()
+    {
+        System.out.println("Deine Karten :");
+        System.out.println();
+        for(int i = 0; i < spieler3.length; i++)
+        {
+            System.out.print("[" + spieler3[i].gibKarte() + "]");
+            System.out.println();
+        }
+    }
+    
+    private void printKartenMitte()
+    {   
+        System.out.println("In der Mitter liegen :");
+        System.out.println();
+        for(int i = 0; i < mitte.length; i++)
+        {
+            System.out.print("[" + mitte[i].gibKarte() + "]");
+            System.out.println();
+        }
+    }
+    
     private void printInfo(String pUeberschrift, String pText)
     {
         /* Ihr könntet Euch hier eine Methode erstellen, die Euer Menü
@@ -231,7 +320,7 @@ public class main
          * Außerdem kann diese Methode dann immer die Ausgabe löschen,
          * bevor etwas neues ausgegeben wird.
          */
-        
+
     }
 
     private void initKarten()
